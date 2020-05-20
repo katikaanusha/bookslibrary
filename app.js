@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const cors =require('cors');
 
 const app = express();
+const port = process.env.PORT || 4000;
 
 //allow cross-origin requests
 app.use(cors());
@@ -13,6 +14,7 @@ mongoose.connection.once('open', ()=>{
   console.log("connected to database")
 })
 app.use('/graphql',graphqlHTTP({schema, graphiql:true}));
-app.listen(4000,()=>{
+app.listen(port,()=>{
   console.log("now listening for requests on port 4000");
 })
+  
